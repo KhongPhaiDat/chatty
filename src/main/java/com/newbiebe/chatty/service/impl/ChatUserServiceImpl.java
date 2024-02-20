@@ -40,7 +40,10 @@ public class ChatUserServiceImpl implements ChatUserService {
     ;
 
     @Override
-    ChatUser updateChatUser(Long id, ChatUser chatUser) {
+    public ChatUser updateChatUser(Long id, ChatUser chatUser) {
+        getChatUserById(id);
+        chatUser.setUserId(id);
+        return saveChatUser(chatUser);
     }
 
     ;

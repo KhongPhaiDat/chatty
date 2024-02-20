@@ -82,22 +82,28 @@ public class ChatUserServiceTest {
     @Test
     void update_ChatUser_by_id_should_return_updatedUser() {
         // Given
-        ChatUser chatUser = new ChatUser("Old");
-        chatUser.setUserId(1L);
-
-        ChatUser newChatUser = new ChatUser("New");
-        chatUser.setUserId(1L);
-
         Long userId = 1L;
+        ChatUser originalChatUser = new ChatUser("Original");
+        originalChatUser.setUserId(userId);
 
-        given(chatUserRepository.findById(userId)).willReturn(Optional.of(chatUser));
+        ChatUser updatedChatUser = new ChatUser("Updated");
+        updatedChatUser.setUserId(userId);
 
-        given(chatUserRepository.save(newChatUser)).willReturn(newChatUser);
+        given(chatUserRepository.findById(userId)).willReturn(Optional.of(originalChatUser));
+        given(chatUserRepository.save(updatedChatUser)).willReturn(updatedChatUser);
 
         // When
-        ChatUser updateChatUser = chatUserService.updateChatUser(1L, newChatUser);
+        ChatUser updatedChatUserReturnedFromRepo = chatUserService.updateChatUser(userId, updatedChatUser);
 
         // Then
-        assertThat(getChatUser.getName()).isEqualTo("Joshua Bloch");
+        assertThat(updatedChatUserReturnedFromRepo.getName()).isEqualTo(updatedChatUser.getName());
+
+        updatedChatUser.setName("Update twice");
+
+        // When
+        updatedChatUserReturnedFromRepo = chatUserService.updateChatUser(userId, updatedChatUser);
+
+        // Then
+        assertThat(updatedChatUserReturnedFromRepo.getName()).isEqualTo(updatedChatUser.getName());
     }
 }
