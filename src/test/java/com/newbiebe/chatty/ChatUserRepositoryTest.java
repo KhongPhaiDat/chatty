@@ -1,7 +1,7 @@
 package com.newbiebe.chatty;
 
-import com.newbiebe.chatty.entity.User;
-import com.newbiebe.chatty.repository.UserRepository;
+import com.newbiebe.chatty.entity.ChatUser;
+import com.newbiebe.chatty.repository.ChatUserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -12,29 +12,29 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DataJpaTest
-public class UserRepositoryTest {
+public class ChatUserRepositoryTest {
 
     @Autowired
-    private UserRepository userRepository;
+    private ChatUserRepository chatUserRepository;
 
     @Test
     public void whenSaved_thenFindsById() {
-        User user = new User("Joshua Bloch");
-        user = userRepository.save(user);
+        ChatUser chatUser = new ChatUser("Joshua Bloch");
+        chatUser = chatUserRepository.save(chatUser);
 
-        Optional<User> found = userRepository.findById(user.getUserId());
+        Optional<ChatUser> found = chatUserRepository.findById(chatUser.getUserId());
         assertTrue(found.isPresent());
-        assertEquals("Joshua Bloch", found.get().getName());
+        assertEquals("Effective Java", found.get().getName());
     }
 
 //    @Test
 //    public void whenSaved_thenFindsAll() {
-//        User user1 = new User("Joshua Bloch");
-//        User user2 = new User("Robert C. Martin");
-//        userRepository.save(user1);
-//        userRepository.save(user2);
+//        Book book1 = new Book("Effective Java", "Joshua Bloch");
+//        Book book2 = new Book("Clean Code", "Robert C. Martin");
+//        bookRepository.save(book1);
+//        bookRepository.save(book2);
 //
-//        List<User> books = bookRepository.findAll();
+//        List<Book> books = bookRepository.findAll();
 //        assertEquals(2, books.size());
 //    }
 //
