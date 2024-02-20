@@ -1,11 +1,9 @@
 package com.newbiebe.chatty.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "chat_user")
 public class ChatUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
