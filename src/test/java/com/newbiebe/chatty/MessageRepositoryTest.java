@@ -1,6 +1,5 @@
 package com.newbiebe.chatty;
 
-import com.newbiebe.chatty.entity.Message;
 import com.newbiebe.chatty.repository.MessageRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

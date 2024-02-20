@@ -1,7 +1,6 @@
 package com.newbiebe.chatty.userTest;
 
 import com.newbiebe.chatty.entity.ChatUser;
-import com.newbiebe.chatty.entity.Message;
 import com.newbiebe.chatty.repository.ChatUserRepository;
 import com.newbiebe.chatty.service.impl.ChatUserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,7 +11,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
