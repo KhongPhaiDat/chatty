@@ -24,35 +24,35 @@ public class ChatUserRepositoryTest {
 
         Optional<ChatUser> found = chatUserRepository.findById(chatUser.getUserId());
         assertTrue(found.isPresent());
-        assertEquals("Effective Java", found.get().getName());
+        assertEquals("Joshua Bloch", found.get().getName());
     }
 
-//    @Test
-//    public void whenSaved_thenFindsAll() {
-//        Book book1 = new Book("Effective Java", "Joshua Bloch");
-//        Book book2 = new Book("Clean Code", "Robert C. Martin");
-//        bookRepository.save(book1);
-//        bookRepository.save(book2);
-//
-//        List<Book> books = bookRepository.findAll();
-//        assertEquals(2, books.size());
-//    }
-//
-//    @Test
-//    public void whenInvalidId_thenNotFound() {
-//        Optional<Book> found = bookRepository.findById(-99L);
-//        assertFalse(found.isPresent());
-//    }
-//
-//    @Test
-//    public void whenDeleted_thenDoesNotExist() {
-//        Book book = new Book("Effective Java", "Joshua Bloch");
-//        book = bookRepository.save(book);
-//        Long bookId = book.getId();
-//
-//        bookRepository.deleteById(bookId);
-//        Optional<Book> deleted = bookRepository.findById(bookId);
-//        assertFalse(deleted.isPresent());
-//    }
+    @Test
+    public void whenSaved_thenFindsAll() {
+        ChatUser book1 = new ChatUser("Joshua Bloch");
+        ChatUser book2 = new ChatUser("Robert C. Martin");
+        chatUserRepository.save(book1);
+        chatUserRepository.save(book2);
+
+        List<ChatUser> chatUsers = chatUserRepository.findAll();
+        assertEquals(2, chatUsers.size());
+    }
+
+    @Test
+    public void whenInvalidId_thenNotFound() {
+        Optional<ChatUser> found = chatUserRepository.findById(-99L);
+        assertFalse(found.isPresent());
+    }
+
+    @Test
+    public void whenDeleted_thenDoesNotExist() {
+        ChatUser chatUser = new ChatUser("Joshua Bloch");
+        chatUser = chatUserRepository.save(chatUser);
+        Long chatUserId = chatUser.getUserId();
+
+        chatUserRepository.deleteById(chatUserId);
+        Optional<ChatUser> deleted = chatUserRepository.findById(chatUserId);
+        assertFalse(deleted.isPresent());
+    }
 }
 
