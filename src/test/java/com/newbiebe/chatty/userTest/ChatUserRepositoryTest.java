@@ -1,4 +1,4 @@
-package com.newbiebe.chatty;
+package com.newbiebe.chatty.userTest;
 
 import com.newbiebe.chatty.entity.ChatUser;
 import com.newbiebe.chatty.repository.ChatUserRepository;

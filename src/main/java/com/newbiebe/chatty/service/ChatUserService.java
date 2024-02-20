@@ -9,10 +9,9 @@ public interface ChatUserService {
 
     List<ChatUser> getAllChatUsers();
 
-    //
-    Object getChatUserById(Long id);
+    ChatUser getChatUserById(Long id);
 
     ChatUser updateChatUser(Long id, ChatUser chatUser);
-//
-//    void deleteChatUser(Long id);
+
+    boolean deleteChatUser(Long id);
 }

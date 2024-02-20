@@ -1,6 +1,7 @@
-package com.newbiebe.chatty;
+package com.newbiebe.chatty.userTest;
 
 import com.newbiebe.chatty.entity.ChatUser;
+import com.newbiebe.chatty.entity.Message;
 import com.newbiebe.chatty.repository.ChatUserRepository;
 import com.newbiebe.chatty.service.impl.ChatUserServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -11,11 +12,13 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.doNothing;
 
 public class ChatUserServiceTest {
     @Mock
@@ -105,5 +108,20 @@ public class ChatUserServiceTest {
 
         // Then
         assertThat(updatedChatUserReturnedFromRepo.getName()).isEqualTo(updatedChatUser.getName());
+    }
+
+    @Test
+    void delete_ChatUser_by_id() {
+        // Given
+        long deleteId = 1L;
+
+        given(chatUserRepository.findById(deleteId)).willReturn(Optional.empty());
+        doNothing().when(chatUserRepository).deleteById(deleteId);
+
+        // When
+        boolean checkExistUser = chatUserService.deleteChatUser(deleteId);
+
+        // Then
+        assertTrue(checkExistUser);
     }
 }

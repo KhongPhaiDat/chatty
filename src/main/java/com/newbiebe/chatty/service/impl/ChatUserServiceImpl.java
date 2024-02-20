@@ -3,12 +3,14 @@ package com.newbiebe.chatty.service.impl;
 import com.newbiebe.chatty.entity.ChatUser;
 import com.newbiebe.chatty.service.ChatUserService;
 import com.newbiebe.chatty.repository.ChatUserRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@Service
 public class ChatUserServiceImpl implements ChatUserService {
     private final ChatUserRepository chatUserRepository;
 
@@ -48,9 +50,14 @@ public class ChatUserServiceImpl implements ChatUserService {
 
     ;
 
-//    @Override
-//    void deleteChatUser(Long id) {
-//    }
-//
-//    ;
+    @Override
+    public boolean deleteChatUser(Long id) {
+        chatUserRepository.deleteById(id);
+        Optional<ChatUser> optionalChatUser = chatUserRepository.findById(id);
+
+        return optionalChatUser.isEmpty();
+
+    }
+
+    ;
 }
