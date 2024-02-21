@@ -11,6 +11,8 @@ public interface ChatUserService {
 
     ChatUser getChatUserById(Long id);
 
+    ChatUser getChatUserByName(String name);
+
     ChatUser updateChatUser(Long id, ChatUser chatUser);
 
     boolean deleteChatUser(Long id);
