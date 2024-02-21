@@ -8,6 +8,7 @@ public class ChatUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
+    
     private String name;
 
     public ChatUser() {

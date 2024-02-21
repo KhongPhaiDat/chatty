@@ -5,7 +5,6 @@ import com.newbiebe.chatty.service.ChatUserService;
 import com.newbiebe.chatty.repository.ChatUserRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
@@ -40,6 +39,15 @@ public class ChatUserServiceImpl implements ChatUserService {
     }
 
     ;
+
+    @Override
+    public ChatUser getChatUserByName(String name) {
+        ChatUser chatUser = chatUserRepository.findByName(name);
+        if (chatUser == null) {
+            throw new NoSuchElementException("User not found with name: " + name);
+        }
+        return chatUser;
+    }
 
     @Override
     public ChatUser updateChatUser(Long id, ChatUser chatUser) {
