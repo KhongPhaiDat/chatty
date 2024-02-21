@@ -9,9 +9,11 @@ public interface MessageService {
 
     List<Message> getAllMessages();
 
+//    List<Message> getAllMesagesWithUserName();
+
     Message getMessageById(Long id);
 
-    Message getMessageByUser(String name);
+    Message getMessageByUserId(Long userId);
 
     Message updateMessage(Long id, Message message);
 

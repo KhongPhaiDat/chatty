@@ -8,7 +8,6 @@ public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long messageId;
-
     private String message;
     private Long timestamp;
     private Long userId;

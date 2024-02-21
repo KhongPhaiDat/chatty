@@ -10,7 +10,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api/message")
+@RequestMapping("/api/messages")
 public class MessageController {
 
     private final MessageService messageService;
@@ -34,10 +34,10 @@ public class MessageController {
         return ResponseEntity.ok(messageService.getMessageById(id));
     }
 
-    @GetMapping("/byUser")
-    public ResponseEntity<ResponseWrapper> getMessageByName(@RequestParam String user) {
+    @GetMapping("/byUserId")
+    public ResponseEntity<ResponseWrapper> getMessageByName(@RequestParam Long userId) {
         try {
-            Message messageData = messageService.getMessageByUser(user);
+            Message messageData = messageService.getMessageByUserId(userId);
 
             ResponseWrapper response = new ResponseWrapper("success", messageData);
             return ResponseEntity.ok(response);

@@ -22,14 +22,17 @@ public class MessageServiceImpl implements MessageService {
         return messageRepository.save(message);
     }
 
-    ;
 
     @Override
     public List<Message> getAllMessages() {
         return messageRepository.findAll();
     }
 
-    ;
+
+//    @Override
+//    public List<Message> getAllMesagesWithUserName() {
+//        return messageRepository.getAllMessageWithUserName();
+//    }
 
     @Override
     public Message getMessageById(Long id) {
@@ -38,13 +41,12 @@ public class MessageServiceImpl implements MessageService {
         return optionalMessage.orElseThrow(() -> new NoSuchElementException("Message not found"));
     }
 
-    ;
 
     @Override
-    public Message getMessageByUser(String user) {
-        Message message = messageRepository.findByUser(user);
+    public Message getMessageByUserId(Long userId) {
+        Message message = messageRepository.findByUserId(userId);
         if (message == null) {
-            throw new NoSuchElementException("Message not found with user: " + user);
+            throw new NoSuchElementException("Message not found with user: " + userId);
         }
         return message;
     }
@@ -56,7 +58,6 @@ public class MessageServiceImpl implements MessageService {
         return saveMessage(message);
     }
 
-    ;
 
     @Override
     public boolean deleteMessage(Long id) {
@@ -67,6 +68,5 @@ public class MessageServiceImpl implements MessageService {
 
     }
 
-    ;
 
 }
