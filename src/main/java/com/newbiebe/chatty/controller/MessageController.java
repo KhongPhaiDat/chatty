@@ -34,10 +34,24 @@ public class MessageController {
         return ResponseEntity.ok(messageService.getMessageById(id));
     }
 
+    @GetMapping("/userId/{userId}")
+    public ResponseEntity<ResponseWrapper> getMessageByName2(@PathVariable Long userId) {
+        try {
+            List<Message> messageData = messageService.getMessageByUserId(userId);
+
+            ResponseWrapper response = new ResponseWrapper("success", messageData);
+            return ResponseEntity.ok(response);
+
+        } catch (Exception e) {
+            ResponseWrapper response = new ResponseWrapper("error", "Message not found");
+            return ResponseEntity.status(404).body(response);
+        }
+    }
+
     @GetMapping("/byUserId")
     public ResponseEntity<ResponseWrapper> getMessageByName(@RequestParam Long userId) {
         try {
-            Message messageData = messageService.getMessageByUserId(userId);
+            List<Message> messageData = messageService.getMessageByUserId(userId);
 
             ResponseWrapper response = new ResponseWrapper("success", messageData);
             return ResponseEntity.ok(response);

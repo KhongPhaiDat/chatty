@@ -43,12 +43,12 @@ public class MessageServiceImpl implements MessageService {
 
 
     @Override
-    public Message getMessageByUserId(Long userId) {
-        Message message = messageRepository.findByUserId(userId);
-        if (message == null) {
+    public List<Message> getMessageByUserId(Long userId) {
+        List<Message> messages = messageRepository.findByUserId(userId);
+        if (messages.size() == 0) {
             throw new NoSuchElementException("Message not found with user: " + userId);
         }
-        return message;
+        return messages;
     }
 
     @Override

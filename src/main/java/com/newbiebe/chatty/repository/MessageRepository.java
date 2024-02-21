@@ -9,9 +9,9 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface MessageRepository extends JpaRepository<Message, Long> {
-    Message findByUserId(Long userId);
+    List<Message> findByUserId(Long userId);
 
-    @Query("SELECT m FROM Message m JOIN ChatUser cu ON cu.userId = m.userId")
-    List<Message> getAllMessageWithUserName();
+
+//    List<Message> getAllMessageWithUserName();
 
 }
