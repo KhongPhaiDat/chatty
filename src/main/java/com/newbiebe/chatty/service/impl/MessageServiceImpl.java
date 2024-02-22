@@ -29,10 +29,10 @@ public class MessageServiceImpl implements MessageService {
     }
 
 
-//    @Override
-//    public List<Message> getAllMesagesWithUserName() {
-//        return messageRepository.getAllMessageWithUserName();
-//    }
+    @Override
+    public List<Object> getAllMesagesWithUserName() {
+        return messageRepository.getAllMessageWithUserName();
+    }
 
     @Override
     public Message getMessageById(Long id) {

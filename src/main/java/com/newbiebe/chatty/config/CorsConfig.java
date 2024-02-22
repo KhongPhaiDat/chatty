@@ -14,11 +14,10 @@ public class CorsConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowCredentials(true)
-                        .allowedOrigins("*")
+                        .allowedOrigins("http://localhost:3000")
                         .allowedHeaders("*")
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .maxAge(3600);
-
             }
         };
     }

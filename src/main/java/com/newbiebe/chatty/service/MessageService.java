@@ -9,7 +9,7 @@ public interface MessageService {
 
     List<Message> getAllMessages();
 
-//    List<Message> getAllMesagesWithUserName();
+    List<Object> getAllMesagesWithUserName();
 
     Message getMessageById(Long id);
 

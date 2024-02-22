@@ -3,7 +3,7 @@ package com.newbiebe.chatty.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "message")
+@Table(name = "messages")
 public class Message {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

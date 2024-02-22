@@ -12,6 +12,7 @@ public interface MessageRepository extends JpaRepository<Message, Long> {
     List<Message> findByUserId(Long userId);
 
 
-//    List<Message> getAllMessageWithUserName();
+    @Query("SELECT cu.name, m FROM Message m JOIN ChatUser cu ON cu.userId = m.userId")
+    List<Object> getAllMessageWithUserName();
 
 }

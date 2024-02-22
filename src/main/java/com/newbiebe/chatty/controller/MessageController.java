@@ -25,8 +25,10 @@ public class MessageController {
     }
 
     @GetMapping
-    public List<Message> getAllMessages() {
-        return messageService.getAllMessages();
+    public ResponseEntity<ResponseWrapper> getAllMessages() {
+        List<Object> messages = messageService.getAllMesagesWithUserName();
+        ResponseWrapper response = new ResponseWrapper("success", messages);
+        return ResponseEntity.ok(response);
     }
 
     @GetMapping("/{id}")
